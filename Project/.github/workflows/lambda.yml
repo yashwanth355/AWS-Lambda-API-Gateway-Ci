@@ -15,7 +15,7 @@ jobs:
   strategy: 
     matrix:
       go-version: [1.17]
-      
+
   steps:
    - name: check the code
      uses: actions/Checkout@v2
@@ -39,7 +39,7 @@ jobs:
    - name: check setup
      run: |
      
-       cd source/hello
+       cd Source/hello
        go test ./...
        env GOOS=linux GOARCH=amd64 go build -o ../../bin/hello
        cd ../..
@@ -51,11 +51,11 @@ jobs:
 
 
    - name: terraform init
-     run:  cd infrastructure
+     run:  cd Infrastructure
            terraform init -input=false
 
    - name: terraform apply
-     run:  cd infrastructure
+     run:  cd Infrastructure
            terraform apply -input=false -auto-approve
 
    
