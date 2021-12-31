@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/jagonzalr/go-lambda-terraform-setup/source/hello/handler"
+	"https://github.com/yashwanth355/AWS-Lambda-API-Gateway-Ci.git/source/hello/handler"
 )
 
 func main() {
