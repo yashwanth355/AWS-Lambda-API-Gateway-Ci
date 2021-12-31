@@ -27,34 +27,37 @@ jobs:
 
    - name: test
      run: echo "tested"
+     
    - name: setup go
-
      uses: actions/setup-go@v2
      with:
        go-version: ${{ matrix.go-version }}
      env:
       GO111MODULE: "on"
 
-   - name: check setup
-     run: |
-     
-       cd source/hello
-       go test ./...
-       env GOOS=linux GOARCH=amd64 go build -o ../../bin/hello
-       cd ../..
-
-  -  name: Install Terraform
+   -  name: Install Terraform
       uses: little-core-labs/install-terraform@v2.0.0
       with:
           version: 1.1.2
 
-
+   - name: check setup
+     run: |
+     
+       go mod init Go-Lambda
+       go mod tidy
+ 
+   - name: Build Go function
+     run: |
+     
+       cd Project/Source/hello
+       env GOOS=linux GOARCH=amd64 go build -o ../../bin/hello
+       cd ../..
    - name: terraform init
-     run:  cd infrastructure
-           terraform init -input=false
-
+     run: |
+     
+       cd Project/Infrastructure
+       terraform init -input=false
    - name: terraform apply
-     run:  cd infrastructure
-           terraform apply -input=false -auto-approve
-
-   
+     run: |
+       cd Project/Infrastructure
+       terraform apply -input=false -auto-approve
