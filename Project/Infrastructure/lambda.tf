@@ -75,4 +75,8 @@ resource "aws_api_gateway_deployment" "time_deploy" {
 
 output "url" {
   value = "${aws_api_gateway_deployment.time_deploy.invoke_url}${aws_api_gateway_resource.resource.path}"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b02e1223433d0b3ff61f9cb2581c9273dc741ce4
