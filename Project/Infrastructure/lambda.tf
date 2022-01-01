@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "time" {
-  function_name    = "time"
+  function_name    = "timee"
   filename         = "aws-lambda-go.zip"
   handler          = "main"
   source_code_hash = "data.archive_file.zip.output_base64sha256"
