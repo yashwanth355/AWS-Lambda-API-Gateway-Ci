@@ -1,5 +1,5 @@
 terraform {
-  required_version     = "<= 1.0.0"
+  required_version     = ">= 1.0.0"
   
   required_providers {
     aws = {
@@ -15,7 +15,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket             = "terraform-serverless-example"
+    bucket             = "terraform55"
     key                = "sample/terraform.tfstate"
     region             = "ap-south-1"
     dynamodb_table     = "terraform"
