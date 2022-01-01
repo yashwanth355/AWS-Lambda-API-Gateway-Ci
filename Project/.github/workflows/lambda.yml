@@ -47,7 +47,7 @@ jobs:
        go mod init Go-Lambda
        go mod tidy
  
-   - name: Build Go function
+   - name: Build Go functions
      run: |
      
        cd Project/Source/hello
