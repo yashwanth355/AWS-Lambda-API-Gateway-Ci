@@ -69,14 +69,10 @@ resource "aws_api_gateway_deployment" "time_deploy" {
   depends_on = [aws_api_gateway_integration.integration]
 
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  stage_name  = "v1"
+  stage_name  = "test"
 
 }
 
 output "url" {
   value = "${aws_api_gateway_deployment.time_deploy.invoke_url}${aws_api_gateway_resource.resource.path}"
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b02e1223433d0b3ff61f9cb2581c9273dc741ce4
