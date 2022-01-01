@@ -54,7 +54,7 @@ jobs:
    -  name: Build terraform 
       run:
         echo region = ${{ env.AWS_REGION }} > sensitive.tfvars
-        echo bucket_name = ${{ secrets.BACKEND_BUCKET}} > sensitive.tfvars
+        echo bucket_name = ${{ SECRETS_BACKEND_BUCKET}} > sensitive.tfvars
         echo testing_stage = ${{env.stage}} > sensitive.tfvars
 
 
