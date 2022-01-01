@@ -1,0 +1,69 @@
+name: Lambda CI
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_REGION: "ap-south-1"
+  stage: "dev"
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latesst
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: test
+      run: echo "tested"
+   
+   -  name: setup go
+      uses: actions/setup-go@v2
+      with:
+       go-version: ${{ matrix.go-version }}
+      env:
+       GO111MODULE: "on"
+
+   -  name: check setup
+      run: |
+     
+        cd Source/hello
+        go test ./...
+        env GOOS=linux GOARCH=amd64 go build -o ../../bin/hello
+        cd ../..
+
+   -  name: Install Terraform
+      uses: little-core-labs/install-terraform@v2.0.0
+      with:
+        version: 1.1.2
+
+   -  name: Build terraform 
+      run:
+        echo region = ${{ env.AWS_REGION }} > sensitive.tfvars
+        echo bucket_name = ${{ SECRETS_BACKEND_BUCKET}} > sensitive.tfvars
+        echo testing_stage = ${{env.stage}} > sensitive.tfvars
+
+
+   -  name: terraform init
+      run:  
+        cd Infrastructure
+        terraform init 
+
+   -  name: terraform apply
+      run:  
+        cd Infrastructure
+        terraform apply 
