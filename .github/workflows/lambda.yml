@@ -66,4 +66,4 @@ jobs:
    - name: terraform apply
      run: |
        cd Project/Infrastructure
-       terraform apply
+       terraform apply -auto-approve
