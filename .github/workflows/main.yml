@@ -67,3 +67,4 @@ jobs:
       run:  
         cd Infrastructure
         terraform apply 
+
