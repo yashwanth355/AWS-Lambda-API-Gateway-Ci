@@ -7,6 +7,7 @@ on:
 
 env:
   AWS_REGION: "ap-south-1"
+  stage: "dev"
 
 jobs:
 
@@ -50,15 +51,21 @@ jobs:
       with:
         version: 1.1.2
 
+   -  name: Build terraform 
+      run:
+        echo region = ${{ env.AWS_REGION }} > sensitive.tfvars
+        echo bucket_name = ${{ secrets.BACKEND_BUCKET}} > sensitive.tfvars
+        echo testing_stage = ${{env.stage}} > sensitive.tfvars
+
 
    -  name: terraform init
       run:  
         cd Infrastructure
-        terraform init -input=false
+        terraform init 
 
    -  name: terraform apply
       run:  
         cd Infrastructure
-        terraform apply -input=false -auto-approve
+        terraform apply 
 
    
