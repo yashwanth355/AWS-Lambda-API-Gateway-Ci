@@ -56,9 +56,9 @@ jobs:
 
    -  name: Build terraform  variables
       run:
-       echo region = ${{ env.AWS_REGION }} > sensitive.tfvars
-       ##echo bucket_name = ${{ SECRETS_BACKEND_BUCKET}} > sensitive.tfvars
-       echo testing_stage = ${{env.stage}} > sensitive.tfvars
+       echo region = ${{ env.AWS_REGION }} > Infrastructure/sensitive.tfvars
+       echo bucket_name = ${{ SECRETS_BACKEND_BUCKET}} > Infrastructure/sensitive.tfvars
+       echo testing_stage = ${{env.stage}} > Infrastructure/sensitive.tfvars
 
    - name: terraform init
      run: |
@@ -69,4 +69,4 @@ jobs:
    - name: terraform apply
      run: |
        cd Project/Infrastructure
-       terraform apply
+       terraform apply -auto-approve

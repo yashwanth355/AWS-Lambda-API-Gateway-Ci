@@ -6,7 +6,7 @@ data "archive_file" "lambda_zip" {
 
 
 resource "aws_lambda_function" "time" {
-  function_name    = "timee"
+  function_name    = "time"
   filename         = data.archive_file.lambda_zip.output_path
   handler          = "main"
   source_code_hash = "data.archive_file.zip.output_base64sha256"
