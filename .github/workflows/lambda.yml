@@ -53,17 +53,13 @@ jobs:
        cd Project/Source/hello
        env GOOS=linux GOARCH=amd64 go build -o ../../bin/hello
        cd ../..
-   -  name: Build terraform  variables
-      run:
-
-       echo region = ${{ env.AWS_REGION }} > Infrastructure/sensitive.tfvars
-       echo bucket_name = ${{ secrets.BACKEND_BUCKET}} > Infrastructure/sensitive.tfvars
 
    -  name: terraform init
       run: |
      
        cd Project/Infrastructure
-       terraform init 
+       terraform init
+
    -  name: terraform apply
       run: |
        cd Project/Infrastructure
