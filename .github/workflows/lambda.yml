@@ -6,8 +6,8 @@ on:
       - main
 
 env:
+  Deploy_Route_Url: ${{secrets.AWS_DEPLOY_DEV_ENV}}
   AWS_REGION: "ap-south-1"
-  stage: "dev"
 
 jobs:
  build:
@@ -57,7 +57,7 @@ jobs:
       run:
 
        echo region = ${{ env.AWS_REGION }} > Infrastructure/sensitive.tfvars
-       echo bucket_name = ${{ SECRETS_BACKEND_BUCKET}} > Infrastructure/sensitive.tfvars
+       echo bucket_name = ${{ secrets.BACKEND_BUCKET}} > Infrastructure/sensitive.tfvars
        echo testing_stage = ${{env.stage}} > Infrastructure/sensitive.tfvars
 
 
