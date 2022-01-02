@@ -55,14 +55,11 @@ jobs:
        cd ../..
    -  name: Build terraform  variables
       run:
-<<<<<<< HEAD
+
        echo region = ${{ env.AWS_REGION }} > Infrastructure/sensitive.tfvars
        echo bucket_name = ${{ SECRETS_BACKEND_BUCKET}} > Infrastructure/sensitive.tfvars
        echo testing_stage = ${{env.stage}} > Infrastructure/sensitive.tfvars
-=======
-       echo region = ${{ env.AWS_REGION }} > sensitive.tfvars
-       echo testing_stage = ${{env.stage}} > sensitive.tfvars
->>>>>>> da39ac6721a7b2bf60c60377a2cbcaaf3924e4c7
+
 
    - name: terraform init
      run: |
