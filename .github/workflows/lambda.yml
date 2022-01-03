@@ -50,8 +50,8 @@ jobs:
    - name: Build Go functions
      run: |
      
-       cd Project/Source/hello
-       env GOOS=linux GOARCH=amd64 go build -o ../../bin/hello
+       cd Project/Leads_Module/getLeadsInfo
+       env GOOS=linux GOARCH=amd64 go build -o ../../bin/getLeadsInfo
        cd ../..
 
    -  name: terraform init

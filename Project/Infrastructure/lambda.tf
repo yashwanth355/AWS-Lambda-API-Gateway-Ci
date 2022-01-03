@@ -1,14 +1,14 @@
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "../bin/hello"
-  output_path = "bin/hello.zip"
+  source_file = "../bin/getLeadsInfo"
+  output_path = "bin/getLeadsInfo.zip"
 }
 
 
 resource "aws_lambda_function" "time" {
-  function_name    = "time"
+  function_name    = "getLeadsInfo"
   filename         = data.archive_file.lambda_zip.output_path
-  handler          = "main"
+  handler          = "getLeadsInfo"
   source_code_hash = "data.archive_file.zip.output_base64sha256"
   role             = "${aws_iam_role.iam_for_lambda.arn}"
   runtime          = "go1.x"
