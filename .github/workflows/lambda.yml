@@ -60,7 +60,7 @@ jobs:
        cd Project/Infrastructure
        terraform init
 
-   -  name: terraform apply
+   -  name: terraform apply approve
       run: |
        cd Project/Infrastructure
        terraform apply -auto-approve
