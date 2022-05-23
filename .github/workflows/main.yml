@@ -3,7 +3,15 @@ name: Lambda CI
 on:
   push:
     branches:
-      - main
+      - 'main'
+      - '!yashwanth355-patch-1'
+      - '!yashwanth355-patch-2'
+      
+  pull_request:
+    branches:    
+      - 'main'
+      - '!yashwanth355-patch-1'
+      - '!yashwanth355-patch-2'
 
 env:
   Deploy_Route_Url: ${{secrets.AWS_DEPLOY_DEV_ENV}}
